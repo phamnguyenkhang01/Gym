@@ -5,7 +5,11 @@ export default function Exercisecard(props) {
     const [setsCompleted, setSetsComplete] = useState(0)
 
     function handleSetIncrement() {
-        setSetsComplete((setsCompleted + 1) % 6)
+        console.log (setsCompleted);
+        if (setsCompleted < 5){
+            setSetsComplete((setsCompleted + 1) % 6)
+        }
+        
     }
     
   return (
@@ -42,7 +46,7 @@ export default function Exercisecard(props) {
                         </div>
                 )
             })}
-            <button onClick={handleSetIncrement} className='flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-200 hover:border-blue-600 w-full duration-200'>
+            <button onClick={handleSetIncrement} className={'flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-200 hover:border-blue-600 w-full duration-200 ' + (setsCompleted === 5 ? 'border-yellow-400' : '')} >
                 <h3 className='text-slate-400 text-sm capitalize'> Sets completed</h3>
                 <p className='font-medium'>{setsCompleted} / 5</p>
             </button>
